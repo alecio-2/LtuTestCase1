@@ -25,7 +25,7 @@ public class LtuCase1 {
     private static final Logger LOGGER = LoggerFactory.getLogger(LtuCase1.class);
 
     public static void main(String[] args) throws InterruptedException {
-
+        Configuration.downloadsFolder = System.getProperty("user.dir") + "\\target\\Files";
         // One test case to find the final examination information and verify that the web page has the correct
         // information
         // Open the LTU website
@@ -86,7 +86,7 @@ public class LtuCase1 {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(jsonFile);
 
-            username = jsonNode.get("ltuCredentials").get("username").asText();
+            username = jsonNode.get("ltuCredentials").get("email").asText();
             password = jsonNode.get("ltuCredentials").get("password").asText();
 
         } catch (IOException e) {
@@ -169,7 +169,7 @@ public class LtuCase1 {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(jsonFile);
 
-            username = jsonNode.get("ltuCredentials").get("username").asText();
+            username = jsonNode.get("ltuCredentials").get("email").asText();
             password = jsonNode.get("ltuCredentials").get("password").asText();
 
         } catch (IOException e) {
